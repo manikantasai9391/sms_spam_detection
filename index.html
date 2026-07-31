@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Spam Detection</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT PANEL -->
+
+    <div class="left-panel">
+
+        <h1>📩 SMS Spam Detection</h1>
+
+        <div class="info-box">
+
+            <h2>🚨 What is Spam?</h2>
+
+            <p>
+                Spam messages are unwanted, fraudulent or promotional SMS
+                that are sent to trick users into clicking links,
+                sharing personal information or claiming fake rewards.
+            </p>
+
+            <h3>Common Examples</h3>
+
+            <ul>
+                <li>Congratulations! You won ₹50,000.</li>
+                <li>Claim your FREE gift now.</li>
+                <li>Click here to verify your bank account.</li>
+                <li>You have won a lottery prize.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h2>✅ What is Ham?</h2>
+
+            <p>
+                Ham messages are genuine and safe messages received
+                from friends, family, schools, offices and trusted
+                organizations.
+            </p>
+
+            <h3>Common Examples</h3>
+
+            <ul>
+                <li>Hi, are you coming today?</li>
+                <li>Meeting starts at 3 PM.</li>
+                <li>Happy Birthday!</li>
+                <li>Please submit the assignment tomorrow.</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+
+    <div class="right-panel">
+
+        <h1>🔍 Detect SMS</h1>
+
+        <p style="text-align:center; margin-bottom:20px;">
+            Enter your SMS below to check whether it is a
+            <b>Spam</b> or a <b>Legitimate (Ham)</b> message.
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <textarea
+                name="message"
+                placeholder="Type your SMS here..."
+                required>{{ message if message else '' }}</textarea>
+
+            <button type="submit">
+                Predict Message
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result">
+
+            <h2>{{ prediction }}</h2>
+
+            <p><strong>Confidence:</strong> {{ confidence }}%</p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
