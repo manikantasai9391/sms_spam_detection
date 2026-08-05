@@ -2,10 +2,11 @@ from flask import Flask, render_template, request
 import pickle
 
 app = Flask(__name__)
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Load saved model and vectorizer
-model = pickle.load(open("model.pkl", "rb"))
-vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
+model = pickle.load(open(os.path.join(BASE_DIR, "models", "model.pkl"), "rb"))
+vectorizer = pickle.load(open(os.path.join(BASE_DIR, "models", "tfidfvectorizer.pkl"), "rb"))
 
 @app.route("/")
 def home():
