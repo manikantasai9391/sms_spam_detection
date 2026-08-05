@@ -3,4 +3,4 @@ matplotlib
 seaborn
 scikit-learn
 numpy
-guvicorn
+uvicorn
