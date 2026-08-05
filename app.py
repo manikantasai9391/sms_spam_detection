@@ -6,7 +6,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 model = pickle.load(open(os.path.join(BASE_DIR, "models", "model.pkl"), "rb"))
-vectorizer = pickle.load(open(os.path.join(BASE_DIR, "models", "tfidfvectorizer.pkl"), "rb"))
+vectorizer = pickle.load(open(os.path.join(BASE_DIR, "models", "vectorizer.pkl"), "rb"))
 
 @app.route("/")
 def home():
